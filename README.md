@@ -1,108 +1,80 @@
-### 🪟 Windows & WSL Automation Scripts
+ # Identity & Cloud Security Automation
 
-### Production-ready PowerShell and Bash scripts for rapid environment deployment and security hardening
+![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-5391FE?style=for-the-badge&logo=powershell&logoColor=white)
+![Bash](https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=gnu-bash&logoColor=white)
+![Windows Server](https://img.shields.io/badge/Windows_Server-0078D4?style=for-the-badge&logo=windows&logoColor=white)
+![Azure](https://img.shields.io/badge/Azure-0078D4?style=for-the-badge&logo=microsoft-azure&logoColor=white)
+![Active Directory](https://img.shields.io/badge/Active_Directory-0078D4?style=for-the-badge&logo=windows&logoColor=white)
 
-**This repository contains the automation scripts I use to provision and secure Windows and Ubuntu WSL environments. Built for speed and repeatability—what takes hours manually takes minutes with these scripts.**
+**Private Portfolio Repository**
 
-### 🎯 What This Solves
-**In security engineering, you rebuild environments constantly—testing exploits, spinning up lab infrastructure, hardening fresh systems. These scripts automate:**
+This repository represents my hands-on journey into enterprise identity and access management. As I build out my lab environment, I'm developing PowerShell and Bash automation that bridges traditional Active Directory with modern cloud identity through Azure and Entra ID. Every script here solves a real problem I encountered while learning how enterprises actually secure and manage user identities at scale.
 
-* Fresh System Provisioning: Zero-to-production Windows/Linux setup
-* Security Baselines: CIS-compliant hardening for both Windows and Ubuntu
-* Development Environment: Automated installation of security tools and dev dependencies
-* Network Configuration: Static IP assignment, firewall rules, DNS hardening
+## 🎯 What This Repository Covers
 
+### 🔐 Identity & Access Management
 
-🛠️ Key Capabilities
-PowerShell (Windows)
-* Automated security hardening (disable SMBv1, enable Defender, configure UAC)
-* Bloatware removal and telemetry disabling
-* Development tool installation (Git, VS Code, Python, Docker)
-* Network configuration and firewall rule management
-* Bash (Ubuntu WSL)
-* Ubuntu security baseline implementation
-* Automated installation of penetration testing tools
-* Docker and containerization setup
-* Python virtual environment configuration
+The backbone of modern security is knowing who has access to what, and ensuring that access is appropriate. I'm building automation that handles the full identity lifecycle—from the moment a user account is created in on-premises AD, through synchronization to Entra ID, to eventual offboarding when someone leaves.
 
-### 🚀 Real-World Usage
-* Scenario: New security lab needed for threat research
- ```
-powershell# Windows: 3 minutes to fully hardened workstation
-.\system-setup.ps1 && .\security-hardening.ps1
-bash# WSL: 5 minutes to operational testing environment
-./ubuntu-setup.sh && ./install-tools.sh --pentest
-```
-**Result: Hardened, tool-ready environment without manual configuration errors.**
+Key areas I'm working on:
+- **Active Directory automation** - User provisioning, group management, and ensuring security groups follow least privilege principles
+- **Entra ID integration** - Understanding how cloud identities work and how they sync with on-prem systems
+- **Access auditing** - Scripts that identify who has admin rights, stale accounts, and permission creep
+- **RBAC implementation** - Defining and assigning Azure roles that match actual job functions without over-permissioning
 
-### 🔒 Security First
-**Every script follows security engineering principles:**
+### 🖥️ Windows Server & Active Directory
 
-* Least Privilege: Disables unnecessary services and protocols
-* Defense in Depth: Multiple security controls per system layer
-* Auditability: Logging enabled for all critical changes
-* Idempotent: Safe to run multiple times without breaking the system
+Active Directory is still the foundation of most enterprise networks, even as organizations move to the cloud. I'm learning how to properly configure and secure Windows Server environments, with a focus on the identity services that everything else depends on.
 
+What I'm building:
+- **Core infrastructure roles** - Automated deployment and hardening of DNS, DHCP, and other foundational services
+- **AD security posture** - Scripts to identify weak configurations, legacy protocols that should be disabled, and GPO inconsistencies
+- **Hybrid sync health** - Monitoring tools to ensure Entra Connect is working properly and identities aren't orphaned between environments
+- **Domain controller hardening** - Implementing security baselines that protect the keys to the kingdom
 
-### 📊 Impact
+### 💻 Workstation & Development Environment
 
-* Time Saved: ~2 hours → 5 minutes per system deployment
-* Consistency: Eliminates manual configuration drift
-* Security Posture: Automated CIS baseline compliance
-* Scalability: Same scripts work for 1 machine or 100
+Security starts at the endpoint. If an attacker compromises a workstation with cached credentials or excessive local admin rights, they can pivot through the entire network. I'm developing scripts that lock down Windows workstations and set up secure development environments.
 
+Current automation:
+- **Windows baseline configurations** - Disabling legacy protocols, enforcing BitLocker, and setting password policies that actually make sense
+- **WSL environment deployment** - One-command setup for Ubuntu WSL with security tools pre-configured for testing and learning
+- **Local privilege management** - Controlling who has admin rights and ensuring those privileges are temporary when needed
+- **Security monitoring** - Enabling proper logging so suspicious activity on endpoints gets captured
 
-**This demonstrates: Infrastructure automation, scripting proficiency, security hardening knowledge, and operational efficiency—skills that directly translate to DevSecOps roles.**
+## 📚 What I'm Learning Right Now
 
-**Clean, professional, speaks to value and impact. Good?no thse are just help adin script for windows and windoers server , wsl shouldt be hardned jsut yet and should comde with toolspre installed4:13 PM🪟 Windows & WSL Admin Scripts**
+![Status](https://img.shields.io/badge/Status-Active_Learning-success?style=flat-square)
+![Focus](https://img.shields.io/badge/Focus-IAM_%26_Security-blue?style=flat-square)
+![Lab](https://img.shields.io/badge/Environment-Home_Lab-orange?style=flat-square)
 
-**Personal automation scripts for rapid Windows system administration and WSL tooling setup**
+My current focus is on understanding how identity flows through a hybrid environment. Specifically:
 
-* A collection of PowerShell and Bash scripts I use for managing Windows workstations, Windows Server, and Ubuntu WSL environments. These handle the repetitive tasks—system configuration, software installation, and baseline security—so I can focus on actual work.
+- **Entra ID architecture** - How Conditional Access policies work, what happens during authentication, and how to properly implement MFA without creating user friction
+- **Zero Trust principles** - Moving from "trust but verify" to "never trust, always verify" in practical terms
+- **PowerShell for IAM** - Building modules that interact with Microsoft Graph API, manage Azure resources, and automate complex multi-step workflows
+- **Attack patterns** - Understanding how attackers abuse identity systems (credential stuffing, pass-the-hash, privilege escalation) so I can build defenses that actually work
 
-### 🎯 What's Here
-**PowerShell Scripts (Windows/Windows Server)**
+The goal is to reach a point where I can walk into any organization and quickly understand their identity architecture, spot the security gaps, and build automation to close them.
 
-* System configuration: Network settings, user accounts, services management
-* Software deployment: Automated installation of common tools and applications
-*Security baseline: Basic hardening for workstations and servers
-* Maintenance tasks: Cleanup scripts, log management, performance tuning
+## 💡 Philosophy
 
-**Bash Scripts (Ubuntu WSL)**
+**Automation isn't just about saving time—it's about security.**
 
-* Tool installation: Pre-configured security and development toolsets
-* Environment setup: Python, Docker, Git configuration
-* Quick configs: Aliases, dotfiles, shell customization
+When you configure settings manually through a GUI, you introduce inconsistency. One server gets hardened, another doesn't. One user gets provisioned correctly, another ends up with too many permissions. These gaps are exactly what attackers exploit.
 
+By scripting everything, I ensure:
+- **Repeatability** - The same secure configuration every single time
+- **Auditability** - Everything is in code, so you can see exactly what changed and when
+- **Scalability** - What works for 10 users works for 1,000 users
+- **Documentation** - The script itself becomes the documentation for how the environment is configured
 
-### 🚀 Typical Usage
-**New Windows Workstation**
-```
-powershell.\setup-workstation.ps1  # Configure settings, install software
-.\baseline-security.ps1   # Apply basic security controls
-Windows Server Setup
-powershell.\configure-server.ps1 -Role WebServer  # IIS, certificates, firewall rules
-.\enable-monitoring.ps1                  # Event logging, performance counters
-```
-**WSL Environment**
-```
-bash./install-tools.sh  # nmap, wireshark, metasploit, burp suite, etc.
-./setup-python.sh   # Python 3.x with common libraries
-```
-###  🛠️ Why These Exist
-**Manual system administration is slow and error-prone. These scripts:**
+I'm treating my lab like a production environment because that's how you build good habits. Every script includes error handling, logging, and follows PowerShell best practices.
 
-* Save Time: 10-minute manual tasks → 30 seconds scripted
-* Ensure Consistency: Same configuration every time
-* Document Changes: Scripts serve as living documentation
-* Easy Rollback: Know exactly what was changed
+---
 
+## 📬 Note
 
-### 📝 Notes
+This is a working learning repository. Scripts are tested in my lab environment and evolve as I gain deeper understanding of enterprise identity and security practices.
 
-PowerShell scripts require Administrator privileges
-WSL scripts assume Ubuntu 22.04 or newer
-Designed for personal/lab use—review before using in production
-
-
-***Simple, honest, and shows you automate the boring stuff. Better?***
+*For technical discussion or code review, I'm happy to walk through specific implementations.*
